@@ -48,7 +48,7 @@ int main(int argc, char* args[]) {
     subjects.push_back("//Action");
     subjects.push_back("//Everyday activities");
     subjects.push_back("//Sea");
-    subjects.push_back("//The number siuuu");
+    subjects.push_back("//The number kkkk");
     subjects.push_back("//Shopping");
     // Randomly select a word from the list
     std::cout << "Nhap chu de muon hoc: " << std::endl;
