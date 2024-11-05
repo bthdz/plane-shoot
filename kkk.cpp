@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+pull#include <bits/stdc++.h>
 
 // Struct to store a word and its meaning
 struct Word {
