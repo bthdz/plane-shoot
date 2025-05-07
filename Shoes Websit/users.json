@@ -1,0 +1,421 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "john_smith",
+      "email": "john.smith@example.com",
+      "password": "hashed_password_1",
+      "firstName": "John",
+      "lastName": "Smith",
+      "profileImage": "image/man_dp1.jpg",
+      "phone": "+1 (555) 123-4567",
+      "birthDate": "1990-05-15",
+      "gender": "male",
+      "joinDate": "2025-01-15",
+      "addresses": [
+        {
+          "id": 1,
+          "name": "Home",
+          "address": "123 Main Street, Apt 4B",
+          "city": "New York",
+          "state": "NY",
+          "zipCode": "10001",
+          "country": "United States",
+          "phone": "+1 (555) 123-4567",
+          "isDefault": true
+        },
+        {
+          "id": 2,
+          "name": "Work",
+          "address": "456 Business Avenue, Floor 5",
+          "city": "New York",
+          "state": "NY",
+          "zipCode": "10022",
+          "country": "United States",
+          "phone": "+1 (555) 987-6543",
+          "isDefault": false
+        }
+      ],
+      "paymentMethods": [
+        {
+          "id": 1,
+          "type": "credit_card",
+          "cardNumber": "************4242",
+          "cardHolder": "John Smith",
+          "expiryDate": "12/26",
+          "isDefault": true
+        },
+        {
+          "id": 2,
+          "type": "paypal",
+          "email": "john.smith@example.com",
+          "isDefault": false
+        }
+      ],
+      "orders": [
+        {
+          "id": "NKE87654321",
+          "date": "2025-05-01",
+          "status": "delivered",
+          "items": [
+            {
+              "productId": 1,
+              "name": "Nike Air Max",
+              "price": 199.99,
+              "size": "42",
+              "color": "Purple",
+              "quantity": 1,
+              "image": "image/shoes1.png"
+            },
+            {
+              "productId": 3,
+              "name": "Nike Free Run",
+              "price": 179.99,
+              "size": "42",
+              "color": "Blue",
+              "quantity": 1,
+              "image": "image/shoes3.png"
+            }
+          ],
+          "shippingAddress": 1,
+          "paymentMethod": 1,
+          "subtotal": 379.98,
+          "shipping": 10.00,
+          "tax": 30.40,
+          "total": 420.38
+        },
+        {
+          "id": "NKE87654320",
+          "date": "2025-04-15",
+          "status": "delivered",
+          "items": [
+            {
+              "productId": 5,
+              "name": "Nike Blazer",
+              "price": 189.99,
+              "size": "42",
+              "color": "White",
+              "quantity": 1,
+              "image": "image/shoes5.png"
+            }
+          ],
+          "shippingAddress": 1,
+          "paymentMethod": 1,
+          "subtotal": 189.99,
+          "shipping": 10.00,
+          "tax": 15.20,
+          "total": 215.19
+        },
+        {
+          "id": "NKE87654310",
+          "date": "2025-05-05",
+          "status": "processing",
+          "items": [
+            {
+              "productId": 4,
+              "name": "Nike Air Zoom",
+              "price": 159.99,
+              "size": "42",
+              "color": "Gray",
+              "quantity": 2,
+              "image": "image/shoes4.png"
+            },
+            {
+              "productId": 6,
+              "name": "Nike Free Force",
+              "price": 169.99,
+              "size": "43",
+              "color": "Black",
+              "quantity": 1,
+              "image": "image/shoes6.png"
+            }
+          ],
+          "shippingAddress": 1,
+          "paymentMethod": 1,
+          "subtotal": 489.97,
+          "shipping": 10.00,
+          "tax": 39.20,
+          "total": 539.17
+        }
+      ],
+      "wishlist": [2, 4, 8],
+      "cart": [
+        {
+          "productId": 2,
+          "name": "Nike Revolution",
+          "price": 149.99,
+          "size": "42",
+          "color": "Black",
+          "quantity": 1,
+          "image": "image/shoes2.png"
+        },
+        {
+          "productId": 7,
+          "name": "Nike Classic",
+          "price": 139.99,
+          "size": "42",
+          "color": "White",
+          "quantity": 1,
+          "image": "image/shoes7.png"
+        }
+      ],
+      "emailPreferences": {
+        "orderUpdates": true,
+        "promotions": true,
+        "newArrivals": false
+      }
+    },
+    {
+      "id": 2,
+      "username": "emma_johnson",
+      "email": "emma.johnson@example.com",
+      "password": "hashed_password_2",
+      "firstName": "Emma",
+      "lastName": "Johnson",
+      "profileImage": "image/girl_dp1.jpg",
+      "phone": "+1 (555) 987-6543",
+      "birthDate": "1992-08-22",
+      "gender": "female",
+      "joinDate": "2025-02-10",
+      "addresses": [
+        {
+          "id": 3,
+          "name": "Home",
+          "address": "789 Oak Street",
+          "city": "Boston",
+          "state": "MA",
+          "zipCode": "02108",
+          "country": "United States",
+          "phone": "+1 (555) 987-6543",
+          "isDefault": true
+        }
+      ],
+      "paymentMethods": [
+        {
+          "id": 3,
+          "type": "credit_card",
+          "cardNumber": "************1234",
+          "cardHolder": "Emma Johnson",
+          "expiryDate": "10/26",
+          "isDefault": true
+        }
+      ],
+      "orders": [
+        {
+          "id": "NKE87654319",
+          "date": "2025-04-28",
+          "status": "shipped",
+          "items": [
+            {
+              "productId": 2,
+              "name": "Nike Revolution",
+              "price": 149.99,
+              "size": "39",
+              "color": "Black",
+              "quantity": 1,
+              "image": "image/shoes2.png"
+            },
+            {
+              "productId": 7,
+              "name": "Nike Classic",
+              "price": 139.99,
+              "size": "39",
+              "color": "White",
+              "quantity": 1,
+              "image": "image/shoes7.png"
+            }
+          ],
+          "shippingAddress": 3,
+          "paymentMethod": 3,
+          "subtotal": 289.98,
+          "shipping": 10.00,
+          "tax": 23.20,
+          "total": 323.18
+        },
+        {
+          "id": "NKE87654315",
+          "date": "2025-05-04",
+          "status": "pending",
+          "items": [
+            {
+              "productId": 5,
+              "name": "Nike Blazer",
+              "price": 189.99,
+              "size": "38",
+              "color": "Pink",
+              "quantity": 1,
+              "image": "image/shoes5.png"
+            }
+          ],
+          "shippingAddress": 3,
+          "paymentMethod": 3,
+          "subtotal": 189.99,
+          "shipping": 10.00,
+          "tax": 15.20,
+          "total": 215.19
+        }
+      ],
+      "wishlist": [1, 3, 5],
+      "cart": [
+        {
+          "productId": 1,
+          "name": "Nike Air Max",
+          "price": 199.99,
+          "size": "38",
+          "color": "Purple",
+          "quantity": 1,
+          "image": "image/shoes1.png"
+        },
+        {
+          "productId": 3,
+          "name": "Nike Free Run",
+          "price": 179.99,
+          "size": "39",
+          "color": "Blue",
+          "quantity": 2,
+          "image": "image/shoes3.png"
+        },
+        {
+          "productId": 8,
+          "name": "Nike Air Jordan",
+          "price": 229.99,
+          "size": "38",
+          "color": "Red",
+          "quantity": 1,
+          "image": "image/shoes8.png"
+        }
+      ],
+      "emailPreferences": {
+        "orderUpdates": true,
+        "promotions": false,
+        "newArrivals": true
+      }
+    },
+    {
+      "id": 3,
+      "username": "michael_brown",
+      "email": "michael.brown@example.com",
+      "password": "hashed_password_3",
+      "firstName": "Michael",
+      "lastName": "Brown",
+      "profileImage": "image/man_dp2.jpg",
+      "phone": "+1 (555) 456-7890",
+      "birthDate": "1988-12-03",
+      "gender": "male",
+      "joinDate": "2025-03-05",
+      "addresses": [
+        {
+          "id": 4,
+          "name": "Home",
+          "address": "567 Pine Avenue",
+          "city": "San Francisco",
+          "state": "CA",
+          "zipCode": "94102",
+          "country": "United States",
+          "phone": "+1 (555) 456-7890",
+          "isDefault": true
+        }
+      ],
+      "paymentMethods": [
+        {
+          "id": 4,
+          "type": "credit_card",
+          "cardNumber": "************5678",
+          "cardHolder": "Michael Brown",
+          "expiryDate": "08/27",
+          "isDefault": true
+        }
+      ],
+      "orders": [
+        {
+          "id": "NKE87654318",
+          "date": "2025-05-02",
+          "status": "processing",
+          "items": [
+            {
+              "productId": 8,
+              "name": "Nike Air Jordan",
+              "price": 229.99,
+              "size": "43",
+              "color": "Red",
+              "quantity": 1,
+              "image": "image/shoes8.png"
+            }
+          ],
+          "shippingAddress": 4,
+          "paymentMethod": 4,
+          "subtotal": 229.99,
+          "shipping": 10.00,
+          "tax": 18.40,
+          "total": 258.39
+        },
+        {
+          "id": "NKE87654312",
+          "date": "2025-05-06",
+          "status": "pending",
+          "items": [
+            {
+              "productId": 2,
+              "name": "Nike Revolution",
+              "price": 149.99,
+              "size": "43",
+              "color": "Black",
+              "quantity": 1,
+              "image": "image/shoes2.png"
+            },
+            {
+              "productId": 3,
+              "name": "Nike Free Run",
+              "price": 179.99,
+              "size": "43",
+              "color": "Blue",
+              "quantity": 1,
+              "image": "image/shoes3.png"
+            },
+            {
+              "productId": 4,
+              "name": "Nike Air Zoom",
+              "price": 159.99,
+              "size": "44",
+              "color": "Gray",
+              "quantity": 1,
+              "image": "image/shoes4.png"
+            }
+          ],
+          "shippingAddress": 4,
+          "paymentMethod": 4,
+          "subtotal": 489.97,
+          "shipping": 10.00,
+          "tax": 39.20,
+          "total": 539.17
+        }
+      ],
+      "wishlist": [6],
+      "cart": [
+        {
+          "productId": 1,
+          "name": "Nike Air Max",
+          "price": 199.99,
+          "size": "43",
+          "color": "Purple",
+          "quantity": 1,
+          "image": "image/shoes1.png"
+        },
+        {
+          "productId": 7,
+          "name": "Nike Classic",
+          "price": 139.99,
+          "size": "44",
+          "color": "White",
+          "quantity": 2,
+          "image": "image/shoes7.png"
+        }
+      ],
+      "emailPreferences": {
+        "orderUpdates": true,
+        "promotions": true,
+        "newArrivals": true
+      }
+    }
+  ]
+}

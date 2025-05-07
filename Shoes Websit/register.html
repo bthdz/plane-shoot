@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Nike</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="shortcut icon" href="image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        
+        .loader:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #f85959;
+            border-bottom-color: #f85959;
+            position: absolute;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .loader:after {
+            content: '';
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-left-color: #000;
+            border-right-color: #000;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            animation: spin 1s linear infinite reverse;
+        }
+        
+        .loader-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(0.8); }
+        }
+        
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <img src="image/logo.png" alt="Logo" class="loader-logo">
+        </div>
+    </div>
+
+    <section>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Shoe<span>s</span></h1>
+                </a>
+            </div>
+
+            <ul>
+                <li><a href="index.html#Home">Home</a></li>
+                <li><a href="index.html#Products">Products</a></li>
+                <li><a href="index.html#About">About</a></li>
+                <li><a href="index.html#Review">Review</a></li>
+                <li><a href="index.html#Services">Services</a></li>
+            </ul>
+
+            <div class="icons">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="user-dropdown">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fa-solid fa-user-pen"></i> My Profile</a>
+                        <a href="#"><i class="fa-solid fa-box"></i> My Orders</a>
+                        <a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="#" class="login-link"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                        <a href="register.html" class="active"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Registration Form -->
+    <div class="register_form">
+        <div class="left">
+            <img src="image/logshoes.png">
+        </div>
+
+        <div class="right">
+            <h1>Create Account</h1>
+
+            <form action="#" method="post">
+                <p>Full Name</p>
+                <div class="user">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" name="fullname" placeholder="Full Name" class="username" required>
+                </div>
+
+                <p>Email Address</p>
+                <div class="user">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email Address" class="username" required>
+                </div>
+
+                <p>Phone Number</p>
+                <div class="user">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" name="phone" placeholder="Phone Number" class="username">
+                </div>
+
+                <p>Username</p>
+                <div class="user">
+                    <i class="fa-solid fa-user-tag"></i>
+                    <input type="text" name="username" placeholder="Username" class="username" required>
+                </div>
+
+                <p>Password</p>
+                <div class="password">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+
+                <p>Confirm Password</p>
+                <div class="password">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                </div>
+
+                <div class="terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+
+                <button type="submit">Register</button>
+                
+                <div class="social_register">
+                    <p>Or register with:</p>
+                    <div class="register_icon">
+                        <a href="#"><img src="image/google.png"></a>
+                        <a href="#"><img src="image/facebook.png"></a>
+                        <a href="#"><img src="image/twitter.png"></a>
+                    </div>
+                </div>
+
+                <div class="login_link">
+                    <p>Already have an account? <a href="index.html">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer_main">
+            <div class="tag">
+                <h1>Contact</h1>
+                <a href="#"><i class="fa-solid fa-house"></i>123/Colombo/Sri Lanka</a>
+                <a href="#"><i class="fa-solid fa-phone"></i>+94 12 345 6789</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>contact@gmail.com</a>
+            </div>
+
+            <div class="tag">
+                <h1>Get Help</h1>
+                <a href="#" class="center">FAQ</a>
+                <a href="#" class="center">Shipping</a>
+                <a href="#" class="center">Returns</a>
+                <a href="#" class="center">Payment Options</a>
+            </div>
+
+            <div class="tag">
+                <h1>Our Stores</h1>
+                <a href="#" class="center">Sri Lanka</a>
+                <a href="#" class="center">USA</a>
+                <a href="#" class="center">India</a>
+                <a href="#" class="center">Japan</a>
+            </div>
+
+            <div class="tag">
+                <h1>Follow Us</h1>
+                <div class="social_link">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>                    
+                </div>
+            </div>
+
+            <div class="tag">
+                <h1>Newsletter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="You email id here">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loading screen after page content is loaded
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                setTimeout(() => {
+                    loadingScreen.classList.add('hidden');
+                }, 800); // Show loading screen for at least 800ms
+            }
+        });
+    </script>
+    <script src="notification.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>

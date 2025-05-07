@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Nike</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product-detail.css">
+    <link rel="shortcut icon" href="image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        
+        .loader:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #f85959;
+            border-bottom-color: #f85959;
+            position: absolute;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .loader:after {
+            content: '';
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-left-color: #000;
+            border-right-color: #000;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            animation: spin 1s linear infinite reverse;
+        }
+        
+        .loader-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(0.8); }
+        }
+        
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <img src="image/logo.png" alt="Logo" class="loader-logo">
+        </div>
+    </div>
+
+    <section class="header-section">
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Shoe<span>s</span></h1>
+                </a>
+            </div>
+
+            <ul>
+                <li><a href="index.html#Home">Home</a></li>
+                <li><a href="index.html#Products">Products</a></li>
+                <li><a href="index.html#About">About</a></li>
+                <li><a href="index.html#Review">Review</a></li>
+                <li><a href="index.html#Services">Services</a></li>
+            </ul>
+
+            <div class="icons">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="user-dropdown">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fa-solid fa-user-pen"></i> My Profile</a>
+                        <a href="#"><i class="fa-solid fa-box"></i> My Orders</a>
+                        <a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="#" class="login-link"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                        <a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Product Detail Section -->
+    <div class="product-detail">
+        <div class="product-detail-container">
+            <div class="product-images">
+                <div class="small-images">
+                    <img src="image/shoes1.png" class="small-img" onclick="changeImage(this)">
+                    <img src="image/red_shoes1.png" class="small-img" onclick="changeImage(this)">
+                    <img src="image/red_shoes2.png" class="small-img" onclick="changeImage(this)">
+                    <img src="image/red_shoes3.png" class="small-img" onclick="changeImage(this)">
+                </div>
+                <div class="main-image">
+                    <img src="image/shoes1.png" id="main-product-image">
+                </div>
+            </div>
+            <div class="product-info">
+                <h1 id="product-name">Nike Air Max</h1>
+                <div class="product-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span>(120 reviews)</span>
+                </div>
+                <h2 id="product-price">$199.99</h2>
+                <div class="product-short-description">
+                    <p id="product-short-desc">
+                        Experience ultimate comfort and style with the Nike Air Max. Perfect for both athletic activities and casual wear.
+                    </p>
+                    <a href="#description" class="read-more-link">Read more</a>
+                </div>
+                
+                <div class="product-size">
+                    <h3>Select Size:</h3>
+                    <div class="size-options">
+                        <button class="size-btn">38</button>
+                        <button class="size-btn">39</button>
+                        <button class="size-btn active">40</button>
+                        <button class="size-btn">41</button>
+                        <button class="size-btn">42</button>
+                        <button class="size-btn">43</button>
+                    </div>
+                </div>
+
+                <div class="product-color">
+                    <h3>Select Color:</h3>
+                    <div class="color-options">
+                        <button class="color-btn" style="background: #6c14d0;"></button>
+                        <button class="color-btn active" style="background: #c72092;"></button>
+                        <button class="color-btn" style="background: #000;"></button>
+                        <button class="color-btn" style="background: #4b77be;"></button>
+                    </div>
+                </div>
+
+                <div class="product-quantity">
+                    <h3>Quantity:</h3>
+                    <div class="quantity-selector">
+                        <button id="decrease-quantity">-</button>
+                        <input type="text" id="quantity" value="1">
+                        <button id="increase-quantity">+</button>
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <button class="add-to-cart-btn">
+                        <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+                    </button>
+                    <button class="buy-now-btn">
+                        Buy Now
+                    </button>
+                    <button class="wishlist-btn">
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                </div>
+
+                <div class="product-features">
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Premium quality materials</li>
+                        <li><i class="fa-solid fa-check"></i> Advanced cushioning technology</li>
+                        <li><i class="fa-solid fa-check"></i> Breathable upper mesh</li>
+                        <li><i class="fa-solid fa-check"></i> Durable rubber outsole</li>
+                        <li><i class="fa-solid fa-check"></i> Stylish design for everyday wear</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-tabs">
+            <div class="tab-header">
+                <button class="tab-btn active" data-tab="description">Description</button>
+                <button class="tab-btn" data-tab="specifications">Specifications</button>
+                <button class="tab-btn" data-tab="reviews">Reviews</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="description">
+                    <div id="full-description-content">
+                        <p>The Nike Air Max represents the pinnacle of athletic footwear innovation. Designed with both form and function in mind, these shoes deliver exceptional performance without sacrificing style.</p>
+                        <p>The upper portion features premium materials that provide durability while allowing your feet to breathe during intense activities. The midsole contains Nike's proprietary Air cushioning system, which offers responsive support and impact absorption.</p>
+                        <p>The outsole is crafted from high-quality rubber with a specialized traction pattern, ensuring superior grip on various surfaces. Whether you're an athlete seeking performance benefits or a fashion enthusiast looking for iconic style, the Nike Air Max delivers on all fronts.</p>
+                    </div>
+                </div>
+                <div class="tab-pane" id="specifications">
+                    <table class="specs-table">
+                        <tr>
+                            <td>Brand</td>
+                            <td>Nike</td>
+                        </tr>
+                        <tr>
+                            <td>Model</td>
+                            <td>Air Max</td>
+                        </tr>
+                        <tr>
+                            <td>Upper Material</td>
+                            <td>Engineered mesh with synthetic overlays</td>
+                        </tr>
+                        <tr>
+                            <td>Midsole</td>
+                            <td>Nike Air cushioning technology</td>
+                        </tr>
+                        <tr>
+                            <td>Outsole</td>
+                            <td>Durable rubber with waffle pattern</td>
+                        </tr>
+                        <tr>
+                            <td>Closure Type</td>
+                            <td>Lace-up</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>310g (size 42)</td>
+                        </tr>
+                        <tr>
+                            <td>Available Sizes</td>
+                            <td>38-45 (EU)</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane" id="reviews">
+                    <div class="review-summary">
+                        <div class="average-rating">
+                            <h3>4.5</h3>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <p>Based on 120 reviews</p>
+                        </div>
+                        <div class="rating-bars">
+                            <div class="rating-bar">
+                                <span>5 stars</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 75%"></div>
+                                </div>
+                                <span>75%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>4 stars</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 15%"></div>
+                                </div>
+                                <span>15%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>3 stars</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 7%"></div>
+                                </div>
+                                <span>7%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>2 stars</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 2%"></div>
+                                </div>
+                                <span>2%</span>
+                            </div>
+                            <div class="rating-bar">
+                                <span>1 star</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 1%"></div>
+                                </div>
+                                <span>1%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-reviews">
+                        <div class="review-item">
+                            <div class="reviewer-info">
+                                <img src="image/man_dp1.jpg" alt="Reviewer">
+                                <div>
+                                    <h4>John Smith</h4>
+                                    <div class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="review-date">May 2, 2025</p>
+                                </div>
+                            </div>
+                            <p class="review-text">These shoes are amazing! Super comfortable and stylish. I've received many compliments when wearing them. Highly recommend to anyone looking for quality footwear.</p>
+                        </div>
+                        <div class="review-item">
+                            <div class="reviewer-info">
+                                <img src="image/girl_dp1.jpg" alt="Reviewer">
+                                <div>
+                                    <h4>Emma Johnson</h4>
+                                    <div class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                    <p class="review-date">April 28, 2025</p>
+                                </div>
+                            </div>
+                            <p class="review-text">Very comfortable shoes that look great with almost any outfit. My only complaint is that they run slightly small. I would recommend ordering half a size up.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="related-products">
+            <h2>You May Also Like</h2>
+            <div class="related-products-container">
+                <div class="related-product">
+                    <img src="image/shoes2.png" alt="Related Product">
+                    <h3>Nike Revolution</h3>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="price">$149.99</p>
+                    <button class="view-btn" data-product-id="2">View Details</button>
+                </div>
+                <div class="related-product">
+                    <img src="image/shoes3.png" alt="Related Product">
+                    <h3>Nike Free Run</h3>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="price">$179.99</p>
+                    <button class="view-btn" data-product-id="3">View Details</button>
+                </div>
+                <div class="related-product">
+                    <img src="image/shoes4.png" alt="Related Product">
+                    <h3>Nike Air Zoom</h3>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="price">$159.99</p>
+                    <button class="view-btn" data-product-id="4">View Details</button>
+                </div>
+                <div class="related-product">
+                    <img src="image/shoes5.png" alt="Related Product">
+                    <h3>Nike Blazer</h3>
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="price">$189.99</p>
+                    <button class="view-btn" data-product-id="5">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer_main">
+            <div class="tag">
+                <h1>Contact</h1>
+                <a href="#"><i class="fa-solid fa-house"></i>123/Colombo/Sri Lanka</a>
+                <a href="#"><i class="fa-solid fa-phone"></i>+94 12 345 6789</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>contact@gmail.com</a>
+            </div>
+
+            <div class="tag">
+                <h1>Get Help</h1>
+                <a href="#" class="center">FAQ</a>
+                <a href="#" class="center">Shipping</a>
+                <a href="#" class="center">Returns</a>
+                <a href="#" class="center">Payment Options</a>
+            </div>
+
+            <div class="tag">
+                <h1>Our Stores</h1>
+                <a href="#" class="center">Sri Lanka</a>
+                <a href="#" class="center">USA</a>
+                <a href="#" class="center">India</a>
+                <a href="#" class="center">Japan</a>
+            </div>
+
+            <div class="tag">
+                <h1>Follow Us</h1>
+                <div class="social_link">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>                    
+                </div>
+            </div>
+
+            <div class="tag">
+                <h1>Newsletter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="You email id here">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="notification.js"></script>
+    <script src="product-detail.js"></script>
+    <script src="cart.js"></script>
+    <script src="login.js"></script>
+    
+</body>
+</html>

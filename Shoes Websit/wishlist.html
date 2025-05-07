@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm yêu thích - Nike</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="wishlist.css">
+    <link rel="shortcut icon" href="image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        
+        .loader:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #f85959;
+            border-bottom-color: #f85959;
+            position: absolute;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .loader:after {
+            content: '';
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-left-color: #000;
+            border-right-color: #000;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            animation: spin 1s linear infinite reverse;
+        }
+        
+        .loader-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(0.8); }
+        }
+        
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <img src="image/logo.png" alt="Logo" class="loader-logo">
+        </div>
+    </div>
+
+    <!-- Navigation Section -->
+    <section>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Shoe<span>s</span></h1>
+                </a>
+            </div>
+
+            <ul>
+                <li><a href="index.html#Home">Home</a></li>
+                <li><a href="index.html#Products">Products</a></li>
+                <li><a href="index.html#About">About</a></li>
+                <li><a href="index.html#Review">Review</a></li>
+                <li><a href="index.html#Servises">Servises</a></li>
+            </ul>
+
+            <div class="icons">
+                <i class="fa-solid fa-heart active"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="user-dropdown">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fa-solid fa-user-pen"></i> My Profile</a>
+                        <a href="#"><i class="fa-solid fa-box"></i> My Orders</a>
+                        <a href="wishlist.html"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="#" class="login-link"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                        <a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Wishlist Section -->
+    <div class="wishlist-container">
+        <div class="wishlist-header">
+            <h1>Sản phẩm yêu thích</h1>
+            <p>Danh sách các sản phẩm bạn đã đánh dấu yêu thích</p>
+        </div>
+
+        <div class="wishlist-content">
+            <!-- Wishlist items will be dynamically inserted here -->
+            <div id="wishlist-items">
+                <!-- Empty wishlist message -->
+                <div id="empty-wishlist" style="display: none;">
+                    <div class="empty-wishlist-message">
+                        <i class="fa-solid fa-heart-crack"></i>
+                        <p>Danh sách yêu thích của bạn đang trống</p>
+                        <a href="products.html" class="browse-products-btn">Khám phá sản phẩm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products Section -->
+        <div class="related-products-section">
+            <h2>Có thể bạn cũng thích</h2>
+            <div class="related-products-container">
+                <!-- Related products will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer_main">
+            <div class="tag">
+                <h1>Contact</h1>
+                <a href="#"><i class="fa-solid fa-house"></i>123/Colombo/Sri Lanka</a>
+                <a href="#"><i class="fa-solid fa-phone"></i>+94 12 345 6789</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>contact@gmail.com</a>
+            </div>
+
+            <div class="tag">
+                <h1>Get Help</h1>
+                <a href="#" class="center">FAQ</a>
+                <a href="#" class="center">Shipping</a>
+                <a href="#" class="center">Returns</a>
+                <a href="#" class="center">Payment Options</a>
+            </div>
+
+            <div class="tag">
+                <h1>Our Stores</h1>
+                <a href="#" class="center">Sri Lanka</a>
+                <a href="#" class="center">USA</a>
+                <a href="#" class="center">India</a>
+                <a href="#" class="center">Japan</a>
+            </div>
+
+            <div class="tag">
+                <h1>Follow Us</h1>
+                <div class="social_link">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>                    
+                </div>
+            </div>
+
+            <div class="tag">
+                <h1>Newsletter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="You email id here">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="login.js"></script>
+    <script src="wishlist.js"></script>
+</body>
+</html>

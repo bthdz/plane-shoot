@@ -1,0 +1,210 @@
+/* Registration Form CSS */
+.register_form {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Changed from center to flex-start */
+    background-image: url(image/loging_bg.png);
+    background-size: cover;
+    background-position: center;
+    padding: 120px 0 50px; /* Adjusted padding to move form up */
+}
+
+.register_form .left img {
+    width: 650px;
+}
+
+.register_form .right {
+    position: relative;
+    padding: 50px 80px;
+    max-width: 550px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.register_form .right h1 {
+    font-family: prevattscriptssk;
+    font-size: 40px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #c72092, #6c14d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+.register_form .right p {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.register_form .right .user,
+.register_form .right .password {
+    border: 2px solid #6c14d0;
+    border-radius: 5px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.register_form .right .user i,
+.register_form .right .password i {
+    margin: 0 15px;
+    color: #c72092;
+}
+
+.register_form .right .user input,
+.register_form .right .password input {
+    flex: 1;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    padding: 0 10px;
+}
+
+.register_form .right .terms {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.register_form .right .terms input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.register_form .right .terms label {
+    font-size: 14px;
+    color: #555;
+}
+
+.register_form .right .terms a {
+    color: #c72092;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.register_form .right .terms a:hover {
+    color: #6c14d0;
+    text-decoration: underline;
+}
+
+.register_form .right button {
+    width: 100%;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background: linear-gradient(to right, #c72092, #6c14d0);
+    transition: 0.3s;
+}
+
+.register_form .right button:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.register_form .right .social_register {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register_form .right .social_register p {
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.register_form .right .register_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.register_form .right .register_icon a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f3f3f3;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.register_form .right .register_icon a:hover {
+    transform: translateY(-3px);
+}
+
+.register_form .right .register_icon img {
+    width: 25px;
+}
+
+.register_form .right .login_link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register_form .right .login_link p {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.register_form .right .login_link a {
+    color: #c72092;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.register_form .right .login_link a:hover {
+    color: #6c14d0;
+    text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1100px) {
+    .register_form {
+        flex-direction: column;
+        padding: 100px 0 30px; /* Adjusted padding for responsive view */
+        align-items: center;
+    }
+    
+    .register_form .left {
+        margin-bottom: 30px;
+    }
+    
+    .register_form .left img {
+        width: 450px;
+    }
+    
+    .register_form .right {
+        padding: 40px 50px;
+    }
+}
+
+@media (max-width: 600px) {
+    .register_form .left img {
+        width: 300px;
+    }
+    
+    .register_form .right {
+        padding: 30px;
+        width: 90%;
+    }
+    
+    .register_form .right h1 {
+        font-size: 30px;
+    }
+}

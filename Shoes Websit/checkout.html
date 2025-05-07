@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Shoes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="shortcut icon" href="image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- Navigation -->
+    <section>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Shoe<span>s</span></h1>
+                </a>
+            </div>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="index.html#About">About</a></li>
+                <li><a href="index.html#Review">Review</a></li>
+                <li><a href="index.html#Services">Services</a></li>
+            </ul>
+
+            <div class="icons">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="user-dropdown">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="dropdown-menu">
+                        <a href="profile.html"><i class="fa-solid fa-user-pen"></i> My Profile</a>
+                        <a href="#"><i class="fa-solid fa-box"></i> My Orders</a>
+                        <a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="#" class="login-link"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+                        <a href="register.html"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Main Checkout Container -->
+    <div class="checkout-container">
+        <h1 class="page-title">Checkout</h1>
+        
+        <div class="checkout-wrapper">
+            <!-- Left Side - Order Summary -->
+            <div class="order-summary">
+                <h2><i class="fa-solid fa-bag-shopping"></i> Order Summary</h2>
+                
+                <div class="cart-items" id="checkout-items">
+                    <!-- Cart items will be populated here from cart.js -->
+                </div>
+                
+                <div class="order-totals">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Discount:</span>
+                        <span id="discount">$0.00</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Shipping:</span>
+                        <span id="shipping">$0.00</span>
+                    </div>
+                    <div class="coupon-input">
+                        <input type="text" id="coupon-code" placeholder="Enter coupon code">
+                        <button id="apply-coupon">Apply</button>
+                    </div>
+                    <div class="total-row grand-total">
+                        <span>Total:</span>
+                        <span id="grand-total">$0.00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Checkout Forms -->
+            <div class="checkout-forms">
+                <!-- Delivery Information -->
+                <div class="checkout-section delivery-info">
+                    <h2><i class="fa-solid fa-truck"></i> Delivery Information</h2>
+                    <form id="delivery-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullname">Full Name</label>
+                                <input type="text" id="fullname" name="fullname" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="province">State/Province</label>
+                                <select id="province" name="province" required>
+                                    <option value="">Select State/Province</option>
+                                    <option value="newyork">New York</option>
+                                    <option value="california">California</option>
+                                    <option value="texas">Texas</option>
+                                    <!-- More options can be added -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">City/District</label>
+                                <select id="district" name="district" required>
+                                    <option value="">Select City/District</option>
+                                    <!-- This will be populated based on province selection -->
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="note">Order Notes</label>
+                            <textarea id="note" name="note" rows="3" placeholder="Notes about your order, e.g. special delivery instructions or additional information."></textarea>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Payment Methods -->
+                <div class="checkout-section payment-methods">
+                    <h2><i class="fa-solid fa-credit-card"></i> Payment Methods</h2>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="payment-cod" name="payment-method" value="cod" checked>
+                            <label for="payment-cod">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                Cash on Delivery (COD)
+                            </label>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="payment-bank" name="payment-method" value="bank">
+                            <label for="payment-bank">
+                                <i class="fa-solid fa-building-columns"></i>
+                                Bank Transfer
+                            </label>
+                            <div class="payment-details bank-details">
+                                <p>Bank: <strong>US Bank</strong></p>
+                                <p>Account Number: <strong>1234567890</strong></p>
+                                <p>Account Holder: <strong>SHOES COMPANY</strong></p>
+                                <p>Reference: <strong>Order #<span id="order-id">12345</span></strong></p>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="payment-card" name="payment-method" value="card">
+                            <label for="payment-card">
+                                <i class="fa-solid fa-credit-card"></i>
+                                Credit/Debit Card
+                            </label>
+                            <div class="payment-details card-details">
+                                <div class="card-icons">
+                                    <i class="fa-brands fa-cc-visa"></i>
+                                    <i class="fa-brands fa-cc-mastercard"></i>
+                                    <i class="fa-brands fa-cc-jcb"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-number">Card Number</label>
+                                    <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="card-expire">Expiry Date</label>
+                                        <input type="text" id="card-expire" placeholder="MM/YY">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="card-cvv">CVV</label>
+                                        <input type="text" id="card-cvv" placeholder="XXX">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-name">Cardholder Name</label>
+                                    <input type="text" id="card-name" placeholder="Name on card">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="payment-option">
+                            <input type="radio" id="payment-paypal" name="payment-method" value="paypal">
+                            <label for="payment-paypal">
+                                <i class="fa-brands fa-paypal"></i>
+                                PayPal
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Confirmation -->
+                <div class="order-actions">
+                    <div class="terms-agreement">
+                        <input type="checkbox" id="terms-agree" required>
+                        <label for="terms-agree">I have read and agree to the <a href="#">terms of service</a> of Shoes</label>
+                    </div>
+                    
+                    <button id="place-order" class="btn-place-order">
+                        <i class="fa-solid fa-check"></i> Place Order
+                    </button>
+                    
+                    <a href="cart.html" class="btn-back-to-cart">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer_main">
+            <div class="tag">
+                <h1>Contact</h1>
+                <a href="#"><i class="fa-solid fa-house"></i>123/Colombo/Sri Lanka</a>
+                <a href="#"><i class="fa-solid fa-phone"></i>+94 12 345 6789</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>contact@gmail.com</a>
+            </div>
+
+            <div class="tag">
+                <h1>Get Help</h1>
+                <a href="#" class="center">FAQ</a>
+                <a href="#" class="center">Shipping</a>
+                <a href="#" class="center">Returns</a>
+                <a href="#" class="center">Payment Options</a>
+            </div>
+
+            <div class="tag">
+                <h1>Our Stores</h1>
+                <a href="#" class="center">Sri Lanka</a>
+                <a href="#" class="center">USA</a>
+                <a href="#" class="center">India</a>
+                <a href="#" class="center">Japan</a>
+            </div>
+
+            <div class="tag">
+                <h1>Follow Us</h1>
+                <div class="social_link">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>                    
+                </div>
+            </div>
+
+            <div class="tag">
+                <h1>Newsletter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="You email id here">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="notification.js"></script>
+    <script src="login.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>

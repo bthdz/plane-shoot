@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Nike Shoes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="shortcut icon" href="image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Loading Screen Styles */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        
+        .loader:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #f85959;
+            border-bottom-color: #f85959;
+            position: absolute;
+            animation: spin 1.5s linear infinite;
+        }
+        
+        .loader:after {
+            content: '';
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-left-color: #000;
+            border-right-color: #000;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            animation: spin 1s linear infinite reverse;
+        }
+        
+        .loader-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(0.8); }
+            50% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(0.8); }
+        }
+        
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <img src="image/logo.png" alt="Logo" class="loader-logo">
+        </div>
+    </div>
+
+    <!-- Navigation Section -->
+    <section>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Shoe<span>s</span></h1>
+                </a>
+            </div>
+
+            <ul>
+                <li><a href="index.html#Home">Home</a></li>
+                <li><a href="index.html#Products">Products</a></li>
+                <li><a href="index.html#About">About</a></li>
+                <li><a href="index.html#Review">Review</a></li>
+                <li><a href="index.html#Services">Services</a></li>
+            </ul>
+
+            <div class="icons">
+                <i class="fa-solid fa-heart"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="user-dropdown">
+                    <i class="fa-solid fa-user-check" style="color: #c72092;"></i>
+                    <div class="dropdown-menu">
+                        <a href="profile.html" class="active"><i class="fa-solid fa-user-pen"></i> My Profile</a>
+                        <a href="#"><i class="fa-solid fa-box"></i> My Orders</a>
+                        <a href="#"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                        <a href="#"><i class="fa-solid fa-gear"></i> Settings</a>
+                        <a href="#" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <!-- Profile Section -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>My Profile</h1>
+            <p>Manage your account information and preferences</p>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-sidebar">
+                <div class="profile-image-container">
+                    <img src="image/man_dp1.jpg" alt="Profile Picture">
+                    <div class="edit-profile-pic">
+                        <label for="profile-upload">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+                        <input type="file" id="profile-upload" hidden>
+                    </div>
+                </div>
+                <h2>John Smith</h2>
+                <p>Member since: April 2025</p>
+                <div class="sidebar-menu">
+                    <a href="#personal-info" class="active"><i class="fa-solid fa-user"></i> Personal Information</a>
+                    <a href="#address-info"><i class="fa-solid fa-location-dot"></i> Addresses</a>
+                    <a href="#order-history"><i class="fa-solid fa-box"></i> Order History</a>
+                    <a href="#payment-methods"><i class="fa-solid fa-credit-card"></i> Payment Methods</a>
+                    <a href="#password-security"><i class="fa-solid fa-lock"></i> Password & Security</a>
+                    <a href="#wishlist"><i class="fa-solid fa-heart"></i> Wishlist</a>
+                    <a href="#notifications"><i class="fa-solid fa-bell"></i> Notifications</a>
+                </div>
+                <button class="logout-btn"><i class="fa-solid fa-sign-out"></i> Logout</button>
+            </div>
+
+            <div class="profile-details">
+                <div class="profile-section active" id="personal-info">
+                    <h2>Personal Information</h2>
+                    <form class="profile-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first-name">First Name</label>
+                                <input type="text" id="first-name" value="John" class="profile-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name</label>
+                                <input type="text" id="last-name" value="Smith" class="profile-input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" value="john.smith@example.com" class="profile-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" value="+1 (555) 123-4567" class="profile-input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="birth-date">Date of Birth</label>
+                                <input type="date" id="birth-date" value="1990-05-15" class="profile-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" class="profile-input">
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefer-not">Prefer not to say</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" class="save-btn">Save Changes</button>
+                            <button type="reset" class="cancel-btn">Cancel</button>
+                        </div>
+                    </form>
+
+                    <h3>Email Preferences</h3>
+                    <div class="email-preferences">
+                        <div class="preference-item">
+                            <div>
+                                <h4>Order Updates</h4>
+                                <p>Receive emails about your orders</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="preference-item">
+                            <div>
+                                <h4>Promotions and Discounts</h4>
+                                <p>Get notified about sales and special offers</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="preference-item">
+                            <div>
+                                <h4>New Arrivals</h4>
+                                <p>Stay updated on new products</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Placeholder for other sections -->
+                <div class="profile-section" id="address-info">
+                    <h2>Addresses</h2>
+                    <div class="address-list">
+                        <div class="address-card default">
+                            <div class="address-card-header">
+                                <h3>Home</h3>
+                                <span class="default-badge">Default</span>
+                            </div>
+                            <div class="address-content">
+                                <p>John Smith</p>
+                                <p>123 Main Street, Apt 4B</p>
+                                <p>New York, NY 10001</p>
+                                <p>United States</p>
+                                <p>Phone: +1 (555) 123-4567</p>
+                            </div>
+                            <div class="address-actions">
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="remove-btn"><i class="fa-solid fa-trash"></i> Remove</button>
+                            </div>
+                        </div>
+                        <div class="address-card">
+                            <div class="address-card-header">
+                                <h3>Work</h3>
+                            </div>
+                            <div class="address-content">
+                                <p>John Smith</p>
+                                <p>456 Business Avenue, Floor 5</p>
+                                <p>New York, NY 10022</p>
+                                <p>United States</p>
+                                <p>Phone: +1 (555) 987-6543</p>
+                            </div>
+                            <div class="address-actions">
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="remove-btn"><i class="fa-solid fa-trash"></i> Remove</button>
+                                <button class="default-btn"><i class="fa-solid fa-check"></i> Set as Default</button>
+                            </div>
+                        </div>
+                        <div class="add-address-card">
+                            <div class="add-address-content">
+                                <i class="fa-solid fa-plus"></i>
+                                <p>Add New Address</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section" id="order-history">
+                    <h2>Order History</h2>
+                    <div class="order-list">
+                        <div class="order-card">
+                            <div class="order-header">
+                                <div>
+                                    <h3>Order #NKE87654321</h3>
+                                    <p>Placed on May 1, 2025</p>
+                                </div>
+                                <span class="order-status delivered">Delivered</span>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item">
+                                    <img src="image/shoes1.png" alt="Nike Air Max">
+                                    <div class="item-details">
+                                        <h4>Nike Air Max</h4>
+                                        <p>Size: 42 | Color: Purple</p>
+                                        <p>Quantity: 1</p>
+                                    </div>
+                                    <div class="item-price">$199.99</div>
+                                </div>
+                                <div class="order-item">
+                                    <img src="image/shoes3.png" alt="Nike Free Run">
+                                    <div class="item-details">
+                                        <h4>Nike Free Run</h4>
+                                        <p>Size: 42 | Color: Blue</p>
+                                        <p>Quantity: 1</p>
+                                    </div>
+                                    <div class="item-price">$179.99</div>
+                                </div>
+                            </div>
+                            <div class="order-footer">
+                                <div class="order-total">
+                                    <p>Total: <span>$379.98</span></p>
+                                </div>
+                                <div class="order-actions">
+                                    <button class="details-btn">View Details</button>
+                                    <button class="track-btn">Track Order</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-card">
+                            <div class="order-header">
+                                <div>
+                                    <h3>Order #NKE87654320</h3>
+                                    <p>Placed on April 15, 2025</p>
+                                </div>
+                                <span class="order-status delivered">Delivered</span>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item">
+                                    <img src="image/shoes5.png" alt="Nike Blazer">
+                                    <div class="item-details">
+                                        <h4>Nike Blazer</h4>
+                                        <p>Size: 42 | Color: White</p>
+                                        <p>Quantity: 1</p>
+                                    </div>
+                                    <div class="item-price">$189.99</div>
+                                </div>
+                            </div>
+                            <div class="order-footer">
+                                <div class="order-total">
+                                    <p>Total: <span>$189.99</span></p>
+                                </div>
+                                <div class="order-actions">
+                                    <button class="details-btn">View Details</button>
+                                    <button class="review-btn">Write Review</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods Section -->
+                <div class="profile-section" id="payment-methods">
+                    <h2>Payment Methods</h2>
+                    <p class="section-description">Manage your saved payment methods for faster checkout</p>
+                    
+                    <div class="payment-methods-list">
+                        <!-- Visa Card -->
+                        <div class="payment-card default">
+                            <div class="payment-card-header">
+                                <div class="card-type-icon">
+                                    <i class="fa-brands fa-cc-visa"></i>
+                                </div>
+                                <div class="default-badge">Default</div>
+                            </div>
+                            <div class="payment-card-body">
+                                <div class="card-details">
+                                    <h3 class="card-title">Visa ending in 4567</h3>
+                                    <p class="card-info">Expires: 05/2028</p>
+                                    <p class="card-holder">John Smith</p>
+                                    <p class="card-address">Billing: 123 Main Street, New York</p>
+                                </div>
+                            </div>
+                            <div class="payment-card-actions">
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="remove-btn"><i class="fa-solid fa-trash"></i> Remove</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Mastercard -->
+                        <div class="payment-card">
+                            <div class="payment-card-header">
+                                <div class="card-type-icon">
+                                    <i class="fa-brands fa-cc-mastercard"></i>
+                                </div>
+                            </div>
+                            <div class="payment-card-body">
+                                <div class="card-details">
+                                    <h3 class="card-title">Mastercard ending in 8901</h3>
+                                    <p class="card-info">Expires: 09/2026</p>
+                                    <p class="card-holder">John Smith</p>
+                                    <p class="card-address">Billing: 456 Business Avenue, New York</p>
+                                </div>
+                            </div>
+                            <div class="payment-card-actions">
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="remove-btn"><i class="fa-solid fa-trash"></i> Remove</button>
+                                <button class="default-btn"><i class="fa-solid fa-check"></i> Set as Default</button>
+                            </div>
+                        </div>
+                        
+                        <!-- PayPal -->
+                        <div class="payment-card">
+                            <div class="payment-card-header">
+                                <div class="card-type-icon">
+                                    <i class="fa-brands fa-paypal"></i>
+                                </div>
+                            </div>
+                            <div class="payment-card-body">
+                                <div class="card-details">
+                                    <h3 class="card-title">PayPal</h3>
+                                    <p class="card-info">john.smith@example.com</p>
+                                </div>
+                            </div>
+                            <div class="payment-card-actions">
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i> Edit</button>
+                                <button class="remove-btn"><i class="fa-solid fa-trash"></i> Remove</button>
+                                <button class="default-btn"><i class="fa-solid fa-check"></i> Set as Default</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add New Payment Method Button -->
+                        <div class="add-payment-method">
+                            <button id="add-payment-btn">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Add Payment Method</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Add New Payment Method Form (Hidden by default) -->
+                    <div class="add-payment-form" id="payment-form" style="display: none;">
+                        <h3>Add New Payment Method</h3>
+                        <form>
+                            <div class="payment-type-selector">
+                                <div class="payment-type active" data-type="credit-card">
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    <span>Credit/Debit Card</span>
+                                </div>
+                                <div class="payment-type" data-type="paypal">
+                                    <i class="fa-brands fa-paypal"></i>
+                                    <span>PayPal</span>
+                                </div>
+                                <div class="payment-type" data-type="bank">
+                                    <i class="fa-solid fa-building-columns"></i>
+                                    <span>Bank Account</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-section" id="credit-card-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="card-number">Card Number</label>
+                                        <input type="text" id="card-number" placeholder="1234 5678 9012 3456" class="profile-input">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="card-name">Name on Card</label>
+                                        <input type="text" id="card-name" placeholder="John Smith" class="profile-input">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group half">
+                                        <label for="expiry-date">Expiry Date</label>
+                                        <input type="text" id="expiry-date" placeholder="MM/YY" class="profile-input">
+                                    </div>
+                                    <div class="form-group half">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" id="cvv" placeholder="123" class="profile-input">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="billing-address">Billing Address</label>
+                                        <select id="billing-address" class="profile-input">
+                                            <option value="home">Home - 123 Main Street, New York</option>
+                                            <option value="work">Work - 456 Business Avenue, New York</option>
+                                            <option value="new">Add New Address</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row checkbox-row">
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="save-card">
+                                        <label for="save-card">Save card for future payments</label>
+                                    </div>
+                                </div>
+                                <div class="form-row checkbox-row">
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" id="set-default">
+                                        <label for="set-default">Set as default payment method</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-buttons">
+                                <button type="submit" class="save-btn">Add Payment Method</button>
+                                <button type="button" class="cancel-btn" id="cancel-payment-btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Password & Security Section -->
+                <div class="profile-section" id="password-security">
+                    <h2>Password & Security</h2>
+                    <p class="section-description">Manage your account security settings and information</p>
+                    
+                    <!-- Change Password Section -->
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <h3><i class="fa-solid fa-lock"></i> Password</h3>
+                            <button class="edit-security-btn" id="change-password-btn">Change</button>
+                        </div>
+                        <div class="security-card-body">
+                            <p>Last changed: <span>April 12, 2025</span></p>
+                            <p class="security-description">A strong password helps protect your account. We recommend a password that is at least 8 characters long, contains both uppercase and lowercase letters, and includes numbers and symbols.</p>
+                        </div>
+                        
+                        <!-- Change Password Form (Hidden by default) -->
+                        <div class="security-form" id="change-password-form" style="display: none;">
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="current-password">Current Password</label>
+                                        <div class="password-input-wrapper">
+                                            <input type="password" id="current-password" class="profile-input" required>
+                                            <button type="button" class="toggle-password">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <a href="forget-password.html" class="forgot-link">Forgot Password?</a>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="new-password">New Password</label>
+                                        <div class="password-input-wrapper">
+                                            <input type="password" id="new-password" class="profile-input" required>
+                                            <button type="button" class="toggle-password">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="confirm-password">Confirm New Password</label>
+                                        <div class="password-input-wrapper">
+                                            <input type="password" id="confirm-password" class="profile-input" required>
+                                            <button type="button" class="toggle-password">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Password Strength Meter -->
+                                <div class="password-strength">
+                                    <div class="strength-meter">
+                                        <span class="meter-section" id="strength-1"></span>
+                                        <span class="meter-section" id="strength-2"></span>
+                                        <span class="meter-section" id="strength-3"></span>
+                                        <span class="meter-section" id="strength-4"></span>
+                                    </div>
+                                    <p class="strength-text">Password strength: <span id="strength-label">Enter a password</span></p>
+                                </div>
+                                
+                                <div class="password-requirements">
+                                    <h4>Password Requirements:</h4>
+                                    <ul>
+                                        <li id="req-length"><i class="fa-solid fa-circle"></i> At least 8 characters</li>
+                                        <li id="req-uppercase"><i class="fa-solid fa-circle"></i> At least 1 uppercase letter</li>
+                                        <li id="req-lowercase"><i class="fa-solid fa-circle"></i> At least 1 lowercase letter</li>
+                                        <li id="req-number"><i class="fa-solid fa-circle"></i> At least 1 number</li>
+                                        <li id="req-special"><i class="fa-solid fa-circle"></i> At least 1 special character</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="form-buttons">
+                                    <button type="submit" class="save-btn">Update Password</button>
+                                    <button type="button" class="cancel-btn" id="cancel-password-btn">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Two-Factor Authentication Section -->
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <h3><i class="fa-solid fa-shield-halved"></i> Two-Factor Authentication</h3>
+                            <div class="two-factor-toggle">
+                                <label class="switch">
+                                    <input type="checkbox" id="two-factor-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="security-card-body">
+                            <p>Status: <span class="status-text" id="two-factor-status">Not Enabled</span></p>
+                            <p class="security-description">Add an extra layer of security to your account. When enabled, you'll need to enter both your password and a security code sent to your phone to sign in.</p>
+                            <button class="setup-btn" id="setup-two-factor-btn">Set Up Two-Factor Authentication</button>
+                        </div>
+                        
+                        <!-- Two-Factor Authentication Setup (Hidden by default) -->
+                        <div class="security-form" id="two-factor-form" style="display: none;">
+                            <div class="two-factor-steps">
+                                <div class="step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4>Download an authenticator app</h4>
+                                        <p>We recommend Google Authenticator or Microsoft Authenticator</p>
+                                        <div class="app-badges">
+                                            <a href="#" class="app-badge">
+                                                <i class="fa-brands fa-google-play"></i> Google Play
+                                            </a>
+                                            <a href="#" class="app-badge">
+                                                <i class="fa-brands fa-apple"></i> App Store
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4>Scan this QR code with the app</h4>
+                                        <div class="qr-code">
+                                            <img src="image/qr-code-sample.png" alt="QR Code" class="qr-image">
+                                            <p>Can't scan? <a href="#" class="setup-code-link">Use setup code instead</a></p>
+                                            <div class="setup-code" style="display: none;">
+                                                <p class="code">ABCD EFGH IJKL MNOP</p>
+                                                <p>Enter this code in your authenticator app</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4>Enter the 6-digit code from the app</h4>
+                                        <div class="verification-code-input">
+                                            <input type="text" maxlength="1" class="code-digit" aria-label="Code digit 1">
+                                            <input type="text" maxlength="1" class="code-digit" aria-label="Code digit 2">
+                                            <input type="text" maxlength="1" class="code-digit" aria-label="Code digit 3">
+                                            <input type="text" maxlength="1" class="code-digit" aria-label="Code digit 4">
+                                            <input type="text" maxlength="1" class="code-digit" aria-label="Code digit 5">
+                                            <input type="text" maxlength="1" class="code-digit" aria-label="Code digit 6">
+                                        </div>
+                                        <div class="form-buttons two-factor-buttons">
+                                            <button type="button" class="save-btn" id="verify-code-btn">Verify & Enable</button>
+                                            <button type="button" class="cancel-btn" id="cancel-two-factor-btn">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Login History Section -->
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <h3><i class="fa-solid fa-clock-rotate-left"></i> Login History</h3>
+                        </div>
+                        <div class="security-card-body">
+                            <p class="security-description">Review recent logins to your account. If you don't recognize a login, change your password immediately.</p>
+                            
+                            <div class="login-history-list">
+                                <div class="login-history-item">
+                                    <div class="login-info">
+                                        <div class="device-icon">
+                                            <i class="fa-solid fa-laptop"></i>
+                                        </div>
+                                        <div class="login-details">
+                                            <p class="device-name">Windows PC - Chrome Browser</p>
+                                            <p class="login-location">New York, United States</p>
+                                            <p class="login-time">May 6, 2025 at 09:45 AM (Current Device)</p>
+                                        </div>
+                                    </div>
+                                    <div class="login-status">
+                                        <span class="status-badge success">Active</span>
+                                    </div>
+                                </div>
+                                <div class="login-history-item">
+                                    <div class="login-info">
+                                        <div class="device-icon">
+                                            <i class="fa-solid fa-mobile-screen"></i>
+                                        </div>
+                                        <div class="login-details">
+                                            <p class="device-name">iPhone - Safari Browser</p>
+                                            <p class="login-location">New York, United States</p>
+                                            <p class="login-time">May 3, 2025 at 07:30 PM</p>
+                                        </div>
+                                    </div>
+                                    <div class="login-status">
+                                        <button class="text-btn">Sign Out</button>
+                                    </div>
+                                </div>
+                                <div class="login-history-item">
+                                    <div class="login-info">
+                                        <div class="device-icon">
+                                            <i class="fa-solid fa-tablet-screen-button"></i>
+                                        </div>
+                                        <div class="login-details">
+                                            <p class="device-name">iPad - Safari Browser</p>
+                                            <p class="login-location">Boston, United States</p>
+                                            <p class="login-time">April 28, 2025 at 03:12 PM</p>
+                                        </div>
+                                    </div>
+                                    <div class="login-status">
+                                        <span class="status-badge inactive">Expired</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="view-more-container">
+                                <button class="view-more-btn">View Full Login History</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Connected Apps Section -->
+                    <div class="security-card">
+                        <div class="security-card-header">
+                            <h3><i class="fa-solid fa-link"></i> Connected Apps</h3>
+                        </div>
+                        <div class="security-card-body">
+                            <p class="security-description">Manage third-party applications that have access to your account.</p>
+                            
+                            <div class="connected-apps-list">
+                                <div class="connected-app-item">
+                                    <div class="app-info">
+                                        <div class="app-icon">
+                                            <i class="fa-brands fa-facebook"></i>
+                                        </div>
+                                        <div class="app-details">
+                                            <p class="app-name">Facebook</p>
+                                            <p class="app-permissions">Account access, Profile information</p>
+                                            <p class="app-connected-date">Connected on: April 15, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="app-actions">
+                                        <button class="disconnect-btn">Disconnect</button>
+                                    </div>
+                                </div>
+                                <div class="connected-app-item">
+                                    <div class="app-info">
+                                        <div class="app-icon">
+                                            <i class="fa-brands fa-google"></i>
+                                        </div>
+                                        <div class="app-details">
+                                            <p class="app-name">Google</p>
+                                            <p class="app-permissions">Account access, Profile information, Email</p>
+                                            <p class="app-connected-date">Connected on: April 10, 2025</p>
+                                        </div>
+                                    </div>
+                                    <div class="app-actions">
+                                        <button class="disconnect-btn">Disconnect</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="connect-app-container">
+                                <button class="connect-app-btn"><i class="fa-solid fa-plus"></i> Connect Another App</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other sections (Password & Security, etc.) would go here -->
+                <!-- These are currently hidden but would be shown when clicking the sidebar links -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer_main">
+            <div class="tag">
+                <h1>Contact</h1>
+                <a href="#"><i class="fa-solid fa-house"></i>123/Colombo/Sri Lanka</a>
+                <a href="#"><i class="fa-solid fa-phone"></i>+94 12 345 6789</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>contact@gmail.com</a>
+            </div>
+
+            <div class="tag">
+                <h1>Get Help</h1>
+                <a href="#" class="center">FAQ</a>
+                <a href="#" class="center">Shipping</a>
+                <a href="#" class="center">Returns</a>
+                <a href="#" class="center">Payment Options</a>
+            </div>
+
+            <div class="tag">
+                <h1>Our Stores</h1>
+                <a href="#" class="center">Sri Lanka</a>
+                <a href="#" class="center">USA</a>
+                <a href="#" class="center">India</a>
+                <a href="#" class="center">Japan</a>
+            </div>
+
+            <div class="tag">
+                <h1>Follow Us</h1>
+                <div class="social_link">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>                    
+                </div>
+            </div>
+
+            <div class="tag">
+                <h1>Newsletter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="You email id here">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching in profile sections
+            const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+            const profileSections = document.querySelectorAll('.profile-section');
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    sidebarLinks.forEach(l => l.classList.remove('active'));
+                    profileSections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+            
+            // Profile picture upload preview
+            const profileUpload = document.getElementById('profile-upload');
+            const profileImage = document.querySelector('.profile-image-container img');
+            
+            profileUpload.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        profileImage.src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Form submission (prevent default for demo)
+            const profileForm = document.querySelector('.profile-form');
+            if (profileForm) {
+                profileForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Profile information updated successfully!');
+                });
+            }
+
+            // Payment Method functionality
+            const addPaymentBtn = document.getElementById('add-payment-btn');
+            const paymentForm = document.getElementById('payment-form');
+            const cancelPaymentBtn = document.getElementById('cancel-payment-btn');
+            const paymentTypes = document.querySelectorAll('.payment-type');
+            
+            // Add Payment button click
+            if (addPaymentBtn) {
+                addPaymentBtn.addEventListener('click', function() {
+                    paymentForm.style.display = 'block';
+                    // Scroll to the form
+                    paymentForm.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            // Cancel button click
+            if (cancelPaymentBtn) {
+                cancelPaymentBtn.addEventListener('click', function() {
+                    paymentForm.style.display = 'none';
+                });
+            }
+            
+            // Payment type selection
+            if (paymentTypes) {
+                paymentTypes.forEach(type => {
+                    type.addEventListener('click', function() {
+                        // Remove active class from all types
+                        paymentTypes.forEach(t => t.classList.remove('active'));
+                        
+                        // Add active class to clicked type
+                        this.classList.add('active');
+                        
+                        // Show corresponding form section (only credit card form implemented for demo)
+                        const paymentType = this.getAttribute('data-type');
+                        // You could add logic here to show different form sections based on payment type
+                    });
+                });
+            }
+            
+            // Set payment as default
+            const defaultBtns = document.querySelectorAll('.payment-card .default-btn');
+            if (defaultBtns) {
+                defaultBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        // Remove default class and badge from all cards
+                        document.querySelectorAll('.payment-card').forEach(card => {
+                            card.classList.remove('default');
+                            const badge = card.querySelector('.default-badge');
+                            if (badge) badge.remove();
+                        });
+                        
+                        // Add default class to selected card
+                        const card = this.closest('.payment-card');
+                        card.classList.add('default');
+                        
+                        // Add default badge
+                        const cardHeader = card.querySelector('.payment-card-header');
+                        const badge = document.createElement('div');
+                        badge.className = 'default-badge';
+                        badge.textContent = 'Default';
+                        cardHeader.appendChild(badge);
+                        
+                        // Hide the set as default button
+                        this.style.display = 'none';
+                        
+                        alert('Default payment method updated!');
+                    });
+                });
+            }
+            
+            // Edit payment method
+            const editPaymentBtns = document.querySelectorAll('.payment-card .edit-btn');
+            if (editPaymentBtns) {
+                editPaymentBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        // For demo purposes, just show the form
+                        paymentForm.style.display = 'block';
+                        paymentForm.scrollIntoView({ behavior: 'smooth' });
+                        alert('Edit functionality would pre-fill the form with card details in a real implementation.');
+                    });
+                });
+            }
+            
+            // Remove payment method
+            const removePaymentBtns = document.querySelectorAll('.payment-card .remove-btn');
+            if (removePaymentBtns) {
+                removePaymentBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        if (confirm('Are you sure you want to remove this payment method?')) {
+                            const card = this.closest('.payment-card');
+                            
+                            // Check if it's the default card
+                            if (card.classList.contains('default')) {
+                                alert('You cannot remove your default payment method. Please set another method as default first.');
+                                return;
+                            }
+                            
+                            // Remove the card with animation
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                card.remove();
+                            }, 300);
+                        }
+                    });
+                });
+            }
+            
+            // Form submission (prevent default for demo)
+            const paymentFormElement = document.querySelector('.add-payment-form form');
+            if (paymentFormElement) {
+                paymentFormElement.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Payment method added successfully! (Demo only)');
+                    paymentForm.style.display = 'none';
+                });
+            }
+            
+            // Password & Security Functionality
+            
+            // Change Password Form
+            const changePasswordBtn = document.getElementById('change-password-btn');
+            const passwordForm = document.getElementById('change-password-form');
+            const cancelPasswordBtn = document.getElementById('cancel-password-btn');
+            
+            if (changePasswordBtn) {
+                changePasswordBtn.addEventListener('click', function() {
+                    passwordForm.style.display = 'block';
+                    // Scroll to the form
+                    passwordForm.scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            if (cancelPasswordBtn) {
+                cancelPasswordBtn.addEventListener('click', function() {
+                    passwordForm.style.display = 'none';
+                });
+            }
+            
+            // Toggle password visibility
+            const togglePasswordBtns = document.querySelectorAll('.toggle-password');
+            if (togglePasswordBtns) {
+                togglePasswordBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const input = this.previousElementSibling;
+                        const icon = this.querySelector('i');
+                        
+                        // Toggle password visibility
+                        if (input.type === 'password') {
+                            input.type = 'text';
+                            icon.classList.remove('fa-eye');
+                            icon.classList.add('fa-eye-slash');
+                        } else {
+                            input.type = 'password';
+                            icon.classList.remove('fa-eye-slash');
+                            icon.classList.add('fa-eye');
+                        }
+                    });
+                });
+            }
+            
+            // Loading screen functionality
+            const loadingScreen = document.getElementById('loadingScreen');
+            window.addEventListener('load', function() {
+                loadingScreen.classList.add('hidden');
+            });
+        });
+    </script>
+    <script src="notification.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
